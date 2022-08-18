@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:miteq/widgets/semua_penawaran.dart';
 
 class PenawaranScreen extends StatelessWidget {
-  const PenawaranScreen({Key? key}) : super(key: key);
+  const PenawaranScreen({Key? key, required this.refresh}) : super(key: key);
+  final VoidCallback refresh;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class PenawaranScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: const SemuaPenawaran(),
+      body: SemuaPenawaran(refresh: refresh),
     );
   }
 }

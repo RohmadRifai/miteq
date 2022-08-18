@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:miteq/models/kolam_models.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class SemuaKolam extends StatefulWidget {
-  const SemuaKolam({Key? key}) : super(key: key);
+  const SemuaKolam({Key? key, required this.refresh}) : super(key: key);
+  final VoidCallback refresh;
 
   @override
   _SemuaKolamState createState() => _SemuaKolamState();
@@ -54,31 +54,34 @@ class _SemuaKolamState extends State<SemuaKolam> {
                               ),
                             ),
                           ),
-                          LinearPercentIndicator(
+                          SizedBox(
                             width: 200,
-                            lineHeight: 8,
-                            percent: kolam.persentase,
-                            progressColor: Colors.blue,
-                            //backgroundColor: Colors.white,
-                            padding: const EdgeInsets.only(left: 5),
-                          ),
+                            child: LinearProgressIndicator(
+                              minHeight: 8,
+                              value: kolam.persentase,
+                              valueColor: AlwaysStoppedAnimation(
+                                  Theme.of(context).colorScheme.secondary),
+                              backgroundColor: Colors.grey,
+                            ),
+                          )
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 1),
                         child: OutlinedButton(
-                          onPressed: () => print('Tekan Detail'),
+                          onPressed: () => setState(() {
+                            kolams.removeAt(index);
+                            widget.refresh();
+                          }),
                           style: OutlinedButton.styleFrom(
-                              side: BorderSide(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                  width: 2),
+                              side:
+                                  const BorderSide(color: Colors.red, width: 2),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20))),
                           child: Text(
-                            'Detail',
+                            'Delete',
                             style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: Colors.red.shade900,
                             ),
                           ),
                         ),

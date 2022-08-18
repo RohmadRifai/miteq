@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:miteq/models/supply_models.dart';
 
 class SemuaPenawaran extends StatefulWidget {
-  const SemuaPenawaran({Key? key}) : super(key: key);
+  const SemuaPenawaran({Key? key, required this.refresh}) : super(key: key);
+  final VoidCallback refresh;
 
   @override
   _SemuaPenawaranState createState() => _SemuaPenawaranState();
@@ -20,8 +21,6 @@ class _SemuaPenawaranState extends State<SemuaPenawaran> {
           itemBuilder: (BuildContext context, int index) {
             Supply supply = supplies[index];
             return SizedBox(
-              //margin: EdgeInsets.only(bottom: 10),
-              //color: Colors.red,
               height: 60,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +66,10 @@ class _SemuaPenawaranState extends State<SemuaPenawaran> {
                       Padding(
                         padding: const EdgeInsets.only(right: 1),
                         child: OutlinedButton(
-                          onPressed: () => print('Tekan Supply'),
+                          onPressed: () => setState(() {
+                            supplies.removeAt(index);
+                            widget.refresh();
+                          }),
                           style: OutlinedButton.styleFrom(
                               side: BorderSide(
                                   color:
