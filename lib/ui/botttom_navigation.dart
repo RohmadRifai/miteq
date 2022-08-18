@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:miteq/ui/akun.dart';
 import 'package:miteq/ui/beranda.dart';
 import 'package:miteq/ui/komoditas.dart';
 import 'package:miteq/ui/miteq.dart';
@@ -15,8 +14,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const Beranda(),
     const Komoditas(),
     const Miteq(),
-    const Text('Supply'),
-    const Akun(),
   ];
   int currentIndex = 0;
 
@@ -56,15 +53,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.work),
             label: 'Miteq',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.input),
-            label: 'Supply',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Akun',
-          ),
+          )
         ],
       ),
     );

@@ -46,7 +46,8 @@ class _PenawaranSupplyState extends State<PenawaranSupply> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const PenawaranScreen(),
+                    builder: (_) =>
+                        PenawaranScreen(refresh: () => setState(() {})),
                   ),
                 ),
                 child: const Icon(
@@ -113,7 +114,9 @@ class _PenawaranSupplyState extends State<PenawaranSupply> {
                             Padding(
                               padding: const EdgeInsets.only(right: 1),
                               child: OutlinedButton(
-                                onPressed: () => print('Tekan Supply'),
+                                onPressed: () => setState(() {
+                                  supplies.removeAt(index);
+                                }),
                                 style: OutlinedButton.styleFrom(
                                     side: BorderSide(
                                         color: Theme.of(context)

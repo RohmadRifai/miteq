@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miteq/models/kolam_models.dart';
 import 'package:miteq/ui/kolam_screen.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ListKolam extends StatefulWidget {
   const ListKolam({Key? key}) : super(key: key);
@@ -45,7 +44,8 @@ class _ListKolamState extends State<ListKolam> {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const KolamScreen(),
+                      builder: (_) =>
+                          KolamScreen(refresh: () => setState(() {})),
                     )),
                 child: const Icon(
                   Icons.arrow_forward,
@@ -96,33 +96,36 @@ class _ListKolamState extends State<ListKolam> {
                                     ),
                                   ),
                                 ),
-                                LinearPercentIndicator(
+                                SizedBox(
                                   width: 200,
-                                  lineHeight: 8,
-                                  percent: kolam.persentase,
-                                  progressColor: Colors.blue,
-                                  padding: const EdgeInsets.only(left: 5),
-                                ),
+                                  child: LinearProgressIndicator(
+                                    minHeight: 8,
+                                    value: kolam.persentase,
+                                    valueColor: AlwaysStoppedAnimation(
+                                        Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
+                                    backgroundColor: Colors.grey,
+                                  ),
+                                )
                               ],
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 1),
                               child: OutlinedButton(
-                                onPressed: () => print('Tekan Detail'),
+                                onPressed: () => setState(() {
+                                  kolams.removeAt(index);
+                                }),
                                 style: OutlinedButton.styleFrom(
-                                    side: BorderSide(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .secondary,
-                                        width: 2),
+                                    side: const BorderSide(
+                                        color: Colors.red, width: 2),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(20))),
                                 child: Text(
-                                  'Detail',
+                                  'Delete',
                                   style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
+                                    color: Colors.red.shade900,
                                   ),
                                 ),
                               ),
