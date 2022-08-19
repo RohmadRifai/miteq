@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:miteq/models/miteq_models.dart';
 
-class MiteqScreen extends StatefulWidget {
+class MiteqScreen extends StatelessWidget {
   const MiteqScreen({Key? key, required this.miteqs}) : super(key: key);
   final Miteqs miteqs;
 
-  @override
-  _MiteqScreenState createState() => _MiteqScreenState();
-}
-
-class _MiteqScreenState extends State<MiteqScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
         title: Text(
-          widget.miteqs.namaMiteq,
+          miteqs.namaMiteq,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -63,7 +58,7 @@ class _MiteqScreenState extends State<MiteqScreen> {
                             ),
                           ),
                           Text(
-                            '${widget.miteqs.ppm}',
+                            '${miteqs.ppm}',
                             style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 18,
@@ -81,7 +76,7 @@ class _MiteqScreenState extends State<MiteqScreen> {
                             ),
                           ),
                           Text(
-                            '${widget.miteqs.ph}',
+                            '${miteqs.ph}',
                             style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 18,
@@ -99,7 +94,7 @@ class _MiteqScreenState extends State<MiteqScreen> {
                             ),
                           ),
                           Text(
-                            '${widget.miteqs.suhuAir}°C',
+                            '${miteqs.suhuAir}°C',
                             style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 18,
@@ -118,7 +113,7 @@ class _MiteqScreenState extends State<MiteqScreen> {
                     ),
                   ),
                   Text(
-                    widget.miteqs.kualitasAir,
+                    miteqs.kualitasAir,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w300,

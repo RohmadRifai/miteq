@@ -11,6 +11,7 @@ class PenawaranSupply extends StatefulWidget {
 class _PenawaranSupplyState extends State<PenawaranSupply> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -39,27 +40,20 @@ class _PenawaranSupplyState extends State<PenawaranSupply> {
                   ),
                 ],
               ),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  if (constraints.maxWidth <= 550) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              PenawaranScreen(refresh: () => setState(() {})),
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
-                      ),
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                },
-              )
+              if (width <= 660)
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          PenawaranScreen(refresh: () => setState(() {})),
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.black,
+                  ),
+                )
             ],
           ),
           const SizedBox(height: 10),

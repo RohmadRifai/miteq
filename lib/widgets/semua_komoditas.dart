@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:miteq/models/komoditas_models.dart';
 import 'package:miteq/ui/komoditas_screen.dart';
 
-class SemuaKomoditas extends StatefulWidget {
+class SemuaKomoditas extends StatelessWidget {
   const SemuaKomoditas({Key? key}) : super(key: key);
 
-  @override
-  _SemuaKomoditasState createState() => _SemuaKomoditasState();
-}
-
-class _SemuaKomoditasState extends State<SemuaKomoditas> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,7 +14,7 @@ class _SemuaKomoditasState extends State<SemuaKomoditas> {
             if (constraints.maxWidth <= 550) {
               return mobile();
             } else {
-              return web();
+              return web(context);
             }
           },
         ));
@@ -30,23 +25,24 @@ class _SemuaKomoditasState extends State<SemuaKomoditas> {
       itemCount: komoditas.length,
       itemBuilder: (BuildContext context, int index) {
         Komoditass komoditass = komoditas[index];
-        return itemContainer(komoditass);
+        return itemContainer(context, komoditass);
       },
     );
   }
 
-  Widget web() {
+  Widget web(BuildContext context) {
     return SingleChildScrollView(
       child: Center(
         child: Wrap(
-          children:
-              komoditas.map((komoditass) => itemContainer(komoditass)).toList(),
+          children: komoditas
+              .map((komoditass) => itemContainer(context, komoditass))
+              .toList(),
         ),
       ),
     );
   }
 
-  Widget itemContainer(Komoditass komoditass) {
+  Widget itemContainer(BuildContext context, Komoditass komoditass) {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,

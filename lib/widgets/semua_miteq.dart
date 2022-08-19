@@ -71,93 +71,95 @@ class _SemuaMiteqState extends State<SemuaMiteq> {
                 ),
               ),
             ),
-            Container(
-                width: 200,
-                height: 160,
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Text(miteq.namaMiteq,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 22,
-                          )),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        const Text(
-                          'PPM          ',
-                          style: TextStyle(
-                            color: Colors.grey,
+            Flexible(
+              child: Container(
+                  width: 200,
+                  height: 160,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(miteq.namaMiteq,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22,
+                            )),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          const Text(
+                            'PPM          ',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '${miteq.ppm}',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            //fontSize: 20,
+                          const SizedBox(
+                            width: 3,
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        const Text(
-                          'pH                   ',
-                          style: TextStyle(
-                            color: Colors.grey,
+                          Text(
+                            '${miteq.ppm}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              //fontSize: 20,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '${miteq.ph}',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          const Text(
+                            'pH                   ',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        const Text(
-                          'Suhu Air      ',
-                          style: TextStyle(
-                            color: Colors.grey,
+                          const SizedBox(
+                            width: 3,
                           ),
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '${miteq.suhuAir}',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
+                          Text(
+                            '${miteq.ph}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          const Text(
+                            'Suhu Air      ',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 3,
+                          ),
+                          Text(
+                            '${miteq.suhuAir}',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )),
+            )
           ],
         ),
       ),

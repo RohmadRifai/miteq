@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:miteq/models/komoditas_models.dart';
 
-class KomoditasScreen extends StatefulWidget {
+class KomoditasScreen extends StatelessWidget {
   const KomoditasScreen({Key? key, required this.komoditass}) : super(key: key);
   final Komoditass komoditass;
 
   @override
-  _KomoditasScreenState createState() => _KomoditasScreenState();
-}
-
-class _KomoditasScreenState extends State<KomoditasScreen> {
-  @override
   Widget build(BuildContext context) {
+    final heightMobile = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(child: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth <= 550) {
-            return mobile();
+            return mobile(heightMobile);
           } else {
             return web();
           }
@@ -25,12 +21,9 @@ class _KomoditasScreenState extends State<KomoditasScreen> {
     );
   }
 
-  Widget mobile() {
+  Widget mobile(double height) {
     return Column(
-      children: [
-        image(height: MediaQuery.of(context).size.width),
-        description()
-      ],
+      children: [image(height: height), description()],
     );
   }
 
@@ -66,13 +59,13 @@ class _KomoditasScreenState extends State<KomoditasScreen> {
             ],
           ),
           child: Hero(
-            tag: widget.komoditass.imageUrl,
+            tag: komoditass.imageUrl,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30)),
               child: Image(
-                image: AssetImage(widget.komoditass.imageUrl),
+                image: AssetImage(komoditass.imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
@@ -112,13 +105,13 @@ class _KomoditasScreenState extends State<KomoditasScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Text(
-            widget.komoditass.namaLobster,
+            komoditass.namaLobster,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 22,
             ),
           ),
-          Text(widget.komoditass.deskripsi),
+          Text(komoditass.deskripsi),
           Row(
             children: <Widget>[
               const Icon(
@@ -129,7 +122,7 @@ class _KomoditasScreenState extends State<KomoditasScreen> {
                 width: 3,
               ),
               Text(
-                '${widget.komoditass.lamaBudidaya}',
+                '${komoditass.lamaBudidaya}',
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
@@ -156,7 +149,7 @@ class _KomoditasScreenState extends State<KomoditasScreen> {
                 width: 3,
               ),
               Text(
-                '${widget.komoditass.harga}',
+                '${komoditass.harga}',
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18,

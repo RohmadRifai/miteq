@@ -12,6 +12,7 @@ class ListKolam extends StatefulWidget {
 class _ListKolamState extends State<ListKolam> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10, top: 20),
       child: Column(
@@ -40,26 +41,19 @@ class _ListKolamState extends State<ListKolam> {
                   ),
                 ],
               ),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  if (constraints.maxWidth <= 550) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                KolamScreen(refresh: () => setState(() {})),
-                          )),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.black,
-                      ),
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                },
-              )
+              if (width <= 670)
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            KolamScreen(refresh: () => setState(() {})),
+                      )),
+                  child: const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.black,
+                  ),
+                )
             ],
           ),
           const SizedBox(height: 10),
